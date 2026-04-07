@@ -44,6 +44,7 @@ function App() {
         Toggle
       </button>
       {count} {show ? "Visible" : "Hidden"}
+      <hr/>
       <Users />
     </>
   );

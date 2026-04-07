@@ -5,6 +5,7 @@ function Users() {
   const [userName, setName] = useState("");
   const [userObj, setUserObj] = useState({ name: "", age: "" });
   const [userObjArray, setUserObjarray] = useState([]);
+  const [hobby, setHobby] = useState([]);
 
   const addUser = () => {
     setUsers([...users, userName]);
@@ -16,10 +17,21 @@ function Users() {
   };
 
   const deleteUser = (index) => {
-    //users.splice(index,1);
     const newUsers = users.filter((val, i) => i != index);
     console.log(newUsers);
     setUsers(newUsers);
+  };
+  const handleHobby = (event) => {
+     console.log(event.target.value, event.target.checked);
+    if (event.target.checked) {
+      setHobby([...hobby, event.target.value]);
+    } else {
+      setHobby([
+        hobby.filter((item) =>item != event.target.value)
+      ]);
+    }
+    console.log(hobby);
+    
   };
 
   return (
@@ -41,19 +53,20 @@ function Users() {
         </li>
       ))}
       <p>User Object</p>
+      <hr />
       <input
         type="text"
         value={userObj.name}
         onChange={(e) => setUserObj({ ...userObj, name: e.target.value })}
       ></input>
-     
       <input
         type="text"
         value={userObj.age}
         onChange={(e) => setUserObj({ ...userObj, age: e.target.value })}
       ></input>
       <button onClick={addUserArray}>Add User</button>
-       <p>User obj array</p>
+      <p>User object array List</p>
+      <hr />
       <ul>
         {userObjArray.map((obj, index) => (
           <li key={index}>
@@ -61,6 +74,37 @@ function Users() {
           </li>
         ))}
       </ul>
+      <ul style={{ listStyleType: "none" }}>
+        <li>
+          <input
+            type="checkbox"
+            id="reading"
+            value="reading"
+            onChange={handleHobby}
+          />
+          <label htmlFor="reading">Reading</label>
+        </li>
+        <li>
+          <input
+            type="checkbox"
+            id="drawing"
+            value="drawing"
+            onChange={handleHobby}
+          />
+          <label htmlFor="drawing">Drawing</label>
+        </li>
+        <li>
+          <input
+            type="checkbox"
+            id="surffing"
+            value="surffing"
+            onChange={handleHobby}
+          />
+          <label htmlFor="surffing">Surffing</label>
+        </li>
+      </ul>
+      <h2>Hobbies:</h2>
+     {hobby.join(",")}
     </>
   );
 }
