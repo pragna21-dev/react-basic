@@ -7,6 +7,7 @@ function Users() {
   const [userObjArray, setUserObjarray] = useState([]);
   const [hobby, setHobby] = useState([]);
    const [gender, setGender] = useState("female");
+   const [city, setCity] = useState("amreli");
 
   const addUser = () => {
     setUsers([...users, userName]);
@@ -114,6 +115,13 @@ function Users() {
      <label htmlFor="female">Female</label> 
      </div>
      {gender}
+     <h5>city</h5>
+     <select  value={city} onChange={(event)=>setCity(event.target.value)}>
+      <option value="surat" >Surat</option>
+      <option value="amreli" >Amreli</option>
+      <option value="bhavnagar">Bhavnage</option>
+     </select>
+     Selected city {city}
     </>
   );
 }
