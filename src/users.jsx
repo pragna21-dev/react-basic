@@ -6,6 +6,7 @@ function Users() {
   const [userObj, setUserObj] = useState({ name: "", age: "" });
   const [userObjArray, setUserObjarray] = useState([]);
   const [hobby, setHobby] = useState([]);
+   const [gender, setGender] = useState("female");
 
   const addUser = () => {
     setUsers([...users, userName]);
@@ -105,6 +106,14 @@ function Users() {
       </ul>
       <h2>Hobbies:</h2>
      {hobby.join(",")}
+     <h3>Gender:</h3>
+     <div style={{display:'flex'}}>      
+     <input type="radio" id="male" name="gender" value="male" checked={gender=='male'} onChange={(event)=>setGender(event.target.value)} />
+     <label htmlFor="male">Male</label>
+     <input type="radio" id="female" name="gender" value="female" checked={gender=='female'} onChange={(event)=>setGender(event.target.value)} />
+     <label htmlFor="female">Female</label> 
+     </div>
+     {gender}
     </>
   );
 }
